@@ -139,7 +139,7 @@ Java 개발자 과정 Database 리포지토리
 ## 3일차
 
 
-- JOIN [SQL](./day03/sql03_조인기본.sql)
+- JOIN :[SQL](./day03/sql03_조인기본.sql)
         - ERD(Entity Realationship Diagram) - 개체 관계 다이어그램
         - PK(Primary Key) - 기본키. 중복 안되고, 빠진 데이터가 하나도 없다 (UNIQUE, NOT NULL)
         - FK(Foreign Key) - 외래키. 다른엔티티(테이블)의 PK 두 엔티티의 관계를 연결 (NULL, 중복O)
@@ -154,7 +154,7 @@ Java 개발자 과정 Database 리포지토리
     - 외부조인
         - PK와 FK간 일치하지 않는 데이터도 출력하고자 할 때 사용하는 방법
         - LEFT OUTER JOIN, RIGHT OUTER JOIN 또는 오라클 간결 문법 사용
-- DDL [SQL](./day03/sql04_DDL.sql)
+- DDL :[SQL](./day03/sql04_DDL.sql)
     - CREATE - TABLE, VIEW, PROCEDURE, FUNTION 개체를 생성하는 키워드
     ```sql
     CREATE TABLE 테이블명 (
