@@ -140,10 +140,11 @@ Java 개발자 과정 Database 리포지토리
 
 
 - JOIN :[SQL](./day03/sql03_조인기본.sql)
-        - ERD(Entity Realationship Diagram) - 개체 관계 다이어그램
-        - PK(Primary Key) - 기본키. 중복 안되고, 빠진 데이터가 하나도 없다 (UNIQUE, NOT NULL)
-        - FK(Foreign Key) - 외래키. 다른엔티티(테이블)의 PK 두 엔티티의 관계를 연결 (NULL, 중복O)
-        -Relationship - 부모 엔티티와 자식 엔티티
+
+    - ERD(Entity Realationship Diagram) - 개체 관계 다이어그램
+    - PK(Primary Key) - 기본키. 중복 안되고, 빠진 데이터가 하나도 없다 (UNIQUE, NOT NULL)
+    - FK(Foreign Key) - 외래키. 다른엔티티(테이블)의 PK 두 엔티티의 관계를 연결 (NULL, 중복O)
+    - Relationship - 부모 엔티티와 자식 엔티티
     - 카티션곱
         - 두 개 이상의 테이블의 조건과 관계없이 연결 할 수 있는 경우의 수 모두 만든 데이터
         - 조인 이전에 데이터 확인 - 실무에서 카티션곱으로 데이터를 사용할 일이 절대! 없음
