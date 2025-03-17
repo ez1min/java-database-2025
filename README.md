@@ -234,7 +234,76 @@ Java 개발자 과정 Database 리포지토리
             - NOT NULL - 값이 빠지면 안됨
             - UNIQUE - 들어간 데이터가 중복되면 안됨
             - CHECK - 기준에 부합하지 않는 데이터는 입력되면 안됨
-    - INDEX
-    - VIEW
-    - 서브쿼리
-    - 시퀀스
+            - DEFAULT - NULL 입력시 기본값이 입력되도록 하는 제약 조건
+            ```sql
+                CREATE TABLE 테이블명 (
+                 컬럼 생성시 제약조건 추가
+                );
+
+                ALTER TABLE 테이블명 ADD CONSTRAINT 제약조건
+            ```
+    - INDEX:
+        - 책의 찾아보기와 동일한 기능
+        - 검색을 매우 빨리 할 수 있도록 해줌
+        B(alanced) Tree를 사용해서 검색횟수 log(n)건으로 줄임
+        - 인덱스 종류 
+            - 클러스터드(Clustered) 인덱스 (테이블 당 1개)
+                - PK에 자동으로 생성되는 인덱스 (무지 빠름)
+                - PK가 없으면 처음으로 설정되는 UNIQUE 제약조건의 컬럼에 인덱스 생성
+            - 보조(Non-Clustered) 인덱스 (여러개)
+                - 사용자가 추가하는 인덱스
+                - 클러스터드 인덱스 보다 조금 느림
+        - 유의점
+            - PK에 자동 인덱스 후 컬럼에 UNIQUE를 걸어도 인덱스가 생성 안됨. 수동으로 생성 필요
+            - WHERE절에서 검색하는 컬름은 인덱스를 걸어 주는 것이 성능 향상에 도움
+            - 인덱스는 한 테이블당 4개 이상 걸면 성능 저하
+            - NULL값, 중복값이 많은 컬럼에 인덱스는 성능 저하
+            - INSERT,UPDATE,DELETE가 많이 발생하는 테이블에 인덱스를 걸면 성능 저하
+            ```sql
+                CREATE INDEX 인덱스명 ON 테이블명(인덱스걸컬럼명)
+            ```
+    ## 5일차
+    - VIEW[SQL](./Day05/sql01_뷰.sql)
+        - 기존 테이블에서 권한별로 보일 수 있는 컬럼을 지정해서 만드는 개체
+        - 기존 테이블 중 개인정보나 중요한 부분이 있으면 제외하고 보일 수 있음
+        - 뷰이라도 INSERT, UPDATE, DELETE 가능. 단일뷰에서만 
+            ```sql
+            CREATE VIEW 뷰명 
+            AS 
+                SELECT 쿼리;
+            [WITH READ ONLY]
+            ```
+    - 서브쿼리[SQL](./Day05/sql02_서브쿼리.sql)
+        - 메인쿼리를 도와주는 하위쿼리 ,소괄호 ()내에 포함됨
+        - 단일행 서브쿼리, 다중행 서브쿼리마다 사용법 다름
+        - SELECT절 서브쿼리, FROM 서브쿼리, WHERE절 서브쿼리
+        - WHERE절 서브쿼리는 JOIN으로 변경 가능
+
+    - 시퀀스[SQL](./Day05/sql03_시퀀스쿼리.sql)
+        - 번호로 지정된 PK값을 자동으로 삽입할 수 있도록 도와주는 기능
+        - 없어도 기능에는 차이 없지만, 효율을 위해 사용
+        - Oracle만 존재. 타 DB보다 자동증가값 사용 불편
+
+            ```sql
+            CREATE SEQUENCE 시퀀스명
+            INCREMENT BY 1 -- 증가값
+            START WITH 1 -- 초기 시작값
+            [MAXVALUE 99999] -- 최대증가값
+            [CYCLE] -- 최대증가값에 도달하면 다시 처음1로 돌아갈것인지
+            [CACHE] -- 번호증가 캐쉬(대용량 삽입시만 관계)
+
+            시퀀스명.nextval
+            시퀀스명.currval
+            ```
+
+    - 사용자 계정 권한 : [쿼리](./Day05/sql04_사용자계정관리.sql)
+        - 사용자 생성 후 권한(롤)을 부여해야 스키마를 사용가능
+
+        ```sql
+        -- 권한 부여
+        GRANT 권한|롤 TO 사용자 [WITH ADMIN|GRANT OPTION];
+        -- 권한 해제
+        REVOKE 권한|롤 FROM 사용자;
+        ```
+
+    
