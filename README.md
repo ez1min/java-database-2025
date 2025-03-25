@@ -387,4 +387,8 @@ Java 개발자 과정 Database 리포지토리
             BEGIN
                 PL/SQL 쿼리
             END;
+
         ```
+
+## 7일차
+- Oracle연동     
